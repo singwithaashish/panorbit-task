@@ -1,10 +1,19 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
+import UserPage from "./pages/UserPage";
 
 function App() {
   return (
-    <>
-      <LandingPage />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={
+          <LandingPage />
+        } />
+        <Route path="/user/:id" element={
+          <UserPage />
+        } />
+      </Routes>
+    </Router>
   );
 }
 
