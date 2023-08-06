@@ -1,12 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import { User } from "../../typings";
-import { useEffect, useRef, useState } from "react";
-import { addUsers, setIsDropdownOpen } from "../../app/features/userSlice";
+import { useEffect } from "react";
+import { addUsers } from "../../app/features/userSlice";
 import { useParams } from "react-router-dom";
 
 export default function ProfileDropdown({
-  setDropdownOpen,
   dropdownOpen,
 }: {
   setDropdownOpen: React.Dispatch<React.SetStateAction<boolean>>;
