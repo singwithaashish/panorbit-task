@@ -1,4 +1,4 @@
-**Panorbit task** is a simple website design based on (Adobe XD)[https://xd.adobe.com/view/68404abc-8176-4529-aa55-fbea81ff4a60-3d13/screen/710e4aaa-8150-4f4a-ad07-d88c48e9bb0a?fullscreen] design.
+**Panorbit task** is a simple website design based on [Adobe XD](https://xd.adobe.com/view/68404abc-8176-4529-aa55-fbea81ff4a60-3d13/screen/710e4aaa-8150-4f4a-ad07-d88c48e9bb0a?fullscreen) design.
 
 ## Table of contents
 * [Demo](#demo)
