@@ -23,5 +23,13 @@ type User = {
     }
 }
 
-export {User};
+type Message = {
+    id: number;
+    message: string;
+    timestamp: string;
+    senderId: number;
+    receiverId: number;
+}
+
+export {User, Message};
    

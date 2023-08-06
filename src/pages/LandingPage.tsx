@@ -1,19 +1,24 @@
 import UserCard from "../components/Users/UserCard";
 import { useEffect, useState } from "react";
 import { User } from "../typings";
+import { useDispatch, useSelector } from "react-redux";
+import { addUsers } from "../app/features/userSlice";
+import { RootState } from "../app/store";
 
 export default function LandingPage() {
-  const [users, setUsers] = useState<User[]>([]);
+  const dispatch = useDispatch();
+  const users = useSelector((state: RootState) => state.user.allUsers) as User[];
 
   useEffect(() => {
     const fetchUsers = async () => {
       const response = await fetch("https://panorbit.in/api/users.json");
       const data = await response.json();
-      console.log(data);
-      setUsers(data.users);
+      dispatch(addUsers(data.users as User[]));
     };
-    fetchUsers();
-  }, []);
+    if (users.length < 1) fetchUsers();
+  }, [users]);
+
+  
 
   return (
     <div className="w-screen h-screen overflow-y-scroll bg-green-300 flex items-center justify-center relative">
@@ -29,7 +34,7 @@ export default function LandingPage() {
               key={user.id}
               name={user.name}
               image={user.profilepicture}
-                id={user.id}
+              id={user.id}
             />
           ))}
         </div>

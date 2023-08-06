@@ -6,7 +6,7 @@ interface UserCardProps {
 
 export default function UserCard({ name, image, id }: UserCardProps) {
   return (
-    <a href={`/user/${id}`} className="flex gap-x-3 items-center py-3 border-b cursor-pointer hover:bg-gray-50 duration-100">
+    <a href={`/user/${id}/profile`} className="flex gap-x-3 items-center py-3 border-b cursor-pointer hover:bg-gray-50 duration-100">
       <div className="w-8 h-8 rounded-full bg-gray-300">
         <img
           src={image}
