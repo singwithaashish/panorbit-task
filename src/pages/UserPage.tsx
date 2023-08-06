@@ -16,7 +16,7 @@ import Sidebar from "../components/Layout/Sidebar";
 export default function UserPage() {
   const { id, page } = useParams();
 
-  const [dropdownOpen, setDropdownOpen] = useState<boolean>(true);
+  const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
 
   const handleDropdownClick = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
