@@ -61,12 +61,18 @@ export default function ProfileScreen({ user }: { user: User | undefined }) {
           <div className="rounded-xl overflow-clip h-80">
             <div>
               <div>
-                {/* for some reason, our lat and lng not working here so a solution would be to use google map with api key */}
+                {/* for some reason, our lat and lng are always at ocean */}
+
                 <iframe
+                  src={`https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d37929.41683100013!2d${user.address.geo.lng.toString()}!3d${user.address.geo.lat.toString()}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1587818542745!5m2!1sen!2sin`}
                   width="600"
-                  height="400"
-                  src="https://www.bing.com/maps/embed?h=400&w=600&cp=12.98363583874702~77.55233992416848&lvl=15.09&typ=s&sty=r&src=SHELL&FORM=MBEDV8"
-                  scrolling="no"
+                  height="450"
+                  frameBorder="0"
+                  style={{ border: 0 }}
+                  allowFullScreen={false}
+                  aria-hidden="true"
+                  tabIndex={0}
+                  
                 ></iframe>
               </div>
             </div>
