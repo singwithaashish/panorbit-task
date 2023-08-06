@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import { User } from "../../typings";
-import { useEffect } from "react";
-import { addUsers } from "../../app/features/userSlice";
+import { useEffect, useRef } from "react";
+import { addUsers, setIsDropdownOpen } from "../../app/features/userSlice";
 import { useParams } from "react-router-dom";
 
 export default function ProfileDropdown() {
-    const {id, page } = useParams();
+  const { id } = useParams();
   const dispatch = useDispatch();
   const users = useSelector(
     (state: RootState) => state.user.allUsers
@@ -21,10 +21,32 @@ export default function ProfileDropdown() {
     fetchUsers();
   }, []);
 
-
   const user = users.filter((user) => user.id === parseInt(id!.toString()))[0];
+
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        // Clicked outside the dropdown, close the dropdown here...
+        dispatch(setIsDropdownOpen(false))
+      }
+    };
+
+    document.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
+
+  //   const user = users.filter((user) => user.id === parseInt(id!.toString()))[0];
   return (
     <div
+      ref={dropdownRef}
       className={
         " w-72 rounded-3xl h-96 absolute bg-white px-5 shadow-2xl translate-y-24 -translate-x-20 right-0 top-0 overflow-clip flex flex-col items-center justify-center duration-300"
       }
@@ -66,9 +88,12 @@ export default function ProfileDropdown() {
         </div>
         <h1 className="text-text-primary text-sm ">{users[1]?.name}</h1>
       </a>
-      <button className="bg-red-500 rounded-3xl px-5 py-2 text-white font-medium mt-5">
+      <a
+        className="bg-red-500 rounded-3xl px-5 py-2 text-white font-medium mt-5"
+        href="/"
+      >
         Sign out
-      </button>
+      </a>
     </div>
   );
 }

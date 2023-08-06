@@ -8,6 +8,7 @@ export interface UserState {
   chatUser?: User;
   isChatSelectorOpen: boolean;
   isChatOpen: boolean;
+  isDropdownOpen: boolean;
 }
 
 const initialState: UserState = {
@@ -16,6 +17,7 @@ const initialState: UserState = {
   chatUser: undefined,
   isChatSelectorOpen: false,
   isChatOpen: false,
+    isDropdownOpen: false,
 };
 
 export const UserSlice = createSlice({
@@ -40,6 +42,9 @@ export const UserSlice = createSlice({
     setIsChatOpen: (state, action: PayloadAction<boolean>) => {
       state.isChatOpen = action.payload;
     },
+    setIsDropdownOpen: (state, action: PayloadAction<boolean>) => {
+        state.isDropdownOpen = action.payload;
+        }
   },
 });
 
@@ -50,6 +55,7 @@ export const {
   setChatUser,
   setIsChatSelectorOpen,
   setIsChatOpen,
+    setIsDropdownOpen,
 } = UserSlice.actions;
 
 export default UserSlice.reducer;

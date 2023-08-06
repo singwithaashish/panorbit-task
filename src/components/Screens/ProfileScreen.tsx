@@ -1,13 +1,9 @@
-import React from 'react'
-import { User } from '../../typings'
+import { User } from "../../typings";
 
-export default function ProfileScreen(
-    {user} : {user: User | undefined}
-) {
-
-    if (!user) {
-        return <div>Loading...</div>; 
-      }
+export default function ProfileScreen({ user }: { user: User | undefined }) {
+  if (!user) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="grid grid-cols-5 gap-5 pt-5 w-full h-full ">
       <div className="col-span-2 border-r border-gray-300 flex flex-col items-center">
@@ -34,9 +30,7 @@ export default function ProfileScreen(
         <h3 className="text-text-primary text-xl pt-5">Company</h3>
         <div className="grid grid-cols-3 gap-3 items-start text-text-primary py-2">
           <p className="text-right col-span-1">Name :</p>
-          <p className="font-bold col-span-2 text-lg">
-            {user?.company.name}
-          </p>
+          <p className="font-bold col-span-2 text-lg">{user?.company.name}</p>
           <p className="text-right col-span-1">catchPhrase :</p>
           <p className="font-bold col-span-2 text-lg">
             {user?.company.catchPhrase}
@@ -58,21 +52,22 @@ export default function ProfileScreen(
               {user?.address.street}
             </p>
             <p className="text-right col-span-1">City :</p>
-            <p className="font-bold col-span-2 text-lg">
-              {user?.address.city}
-            </p>
+            <p className="font-bold col-span-2 text-lg">{user?.address.city}</p>
             <p className="text-right col-span-1">Zipcode :</p>
             <p className="font-bold col-span-2 text-lg">
               {user?.address.zipcode}
             </p>
           </div>
-          <div className="rounded-xl overflow-clip h-80 bg-red-500">
+          <div className="rounded-xl overflow-clip h-80">
+            <div>
             <iframe
-              className="w-full h-full"
-              // frameborder="0"
-              src={`https://www.bing.com/maps/embed?h=400&w=500&cp=${user?.address.geo.lat}~${user?.address.geo.lng}&lvl=11.58&typ=s&sty=r&src=SHELL&FORM=MBEDV8`}
-              scrolling="no"
-            ></iframe>
+      width="600"
+      height="400"
+      // frameborder="0"
+      src={`https://www.bing.com/maps/embed?h=400&w=600&cp=${parseFloat(user?.address.geo.lat)}~${parseFloat(user?.address.geo.lng)}`}
+      // scrolling="no"
+    ></iframe>
+            </div>
           </div>
           <div className="flex justify-end gap-x-2">
             <div className="flex items-center">
@@ -87,5 +82,5 @@ export default function ProfileScreen(
         </div>
       </div>
     </div>
-  )
+  );
 }

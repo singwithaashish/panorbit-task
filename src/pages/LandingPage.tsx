@@ -1,5 +1,5 @@
 import UserCard from "../components/Users/UserCard";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { User } from "../typings";
 import { useDispatch, useSelector } from "react-redux";
 import { addUsers } from "../app/features/userSlice";

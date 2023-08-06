@@ -5,7 +5,7 @@ import { User } from "../typings";
 import { RootState } from "../app/store";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { addUsers } from "../app/features/userSlice";
+import { addUsers, setIsDropdownOpen } from "../app/features/userSlice";
 import ProfileScreen from "../components/Screens/ProfileScreen";
 import PostScreen from "../components/Screens/PostScreen";
 import GalleryScreen from "../components/Screens/GalleryScreen";
@@ -49,12 +49,17 @@ export default function UserPage() {
   };
 
   const navigate = useNavigate();
+  const isDropdownOpen = useSelector(
+    (state: RootState) => state.user.isDropdownOpen
+  ) as boolean;
 
   return (
     <div className="flex gap-x-5 h-screen overflow-hidden p-10 relative">
       <ChatSelector />
       {isChatOpen && <ChatBox />}
-      <ProfileDropdown />
+      {
+        isDropdownOpen && <ProfileDropdown />
+      }
       <div className=" w-[19%] flex flex-col justify-center items-start px-10 bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-3xl relative">
         <p
           onClick={() => navigate(`/user/${id}/profile`)}
@@ -98,7 +103,7 @@ export default function UserPage() {
       <div className=" w-4/5 col-span-10 p-5 overflow-y-scroll">
         <div className="flex justify-between pb-5 border-b border-gray-300">
           <h1 className="text-xl font-medium text-text-primary">Profile</h1>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 cursor-pointer" onClick={() => dispatch(setIsDropdownOpen(true))}>
             <div className="w-8 h-8 rounded-full bg-gray-300">
               <img
                 src={user?.profilepicture}
