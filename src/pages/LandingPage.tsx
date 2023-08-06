@@ -4,6 +4,7 @@ import { User } from "../typings";
 import { useDispatch, useSelector } from "react-redux";
 import { addUsers } from "../app/features/userSlice";
 import { RootState } from "../app/store";
+import wave from "../assets/wave.png"
 
 export default function LandingPage() {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ export default function LandingPage() {
   
 
   return (
-    <div className="w-screen h-screen overflow-y-scroll bg-green-300 flex items-center justify-center relative">
+    <div className="w-screen h-screen overflow-y-scroll flex items-center justify-center relative" style={{backgroundImage: `url(${wave})`, backgroundRepeat: "no-repeat", }}>
       <div className="w-[40vw] h-[65vh] rounded-3xl bg-white overflow-clip shadow-2xl">
         <div className="bg-gray-100 flex justify-center items-center h-[20%]">
           <h1 className="text-xl font-medium text-text-primary text-center">

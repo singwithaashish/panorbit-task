@@ -53,7 +53,7 @@ export default function ProfileDropdown({
     <div
     //   ref={dropdownRef}
       className={
-        " w-72 rounded-3xl h-96 absolute bg-white px-5 shadow-2xl translate-y-24 -translate-x-20 right-0 top-0 overflow-clip flex flex-col items-center justify-center duration-300" +
+        " w-72 rounded-3xl h-96 absolute bg-white px-5 shadow-2xl translate-y-24 right-0 top-0 overflow-clip flex flex-col items-center justify-center duration-300" +
         (dropdownOpen ? " translate-x-0" : " translate-x-full")
       }
     >

@@ -51,6 +51,8 @@ $ npm run dev
 |   |   ├── Dashboard
 |   |   |   ├── ChatBox.tsx
 |   |   |   └── ChatSelector.tsx
+|   |   ├── Layout
+|   |   |   └── Sidebar.tsx
 |   |   ├── Screens
 |   |   |   ├── GalleryScreen.tsx
 |   |   |   ├── PostScreen.tsx
