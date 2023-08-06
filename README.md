@@ -1,27 +1,79 @@
-# React + TypeScript + Vite
+**Panorbit task** is a simple website design based on (Adobe XD)[https://xd.adobe.com/view/68404abc-8176-4529-aa55-fbea81ff4a60-3d13/screen/710e4aaa-8150-4f4a-ad07-d88c48e9bb0a?fullscreen] design.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Table of contents
+* [Demo](#demo)
+* [Technologies](#technologies)
+* [Setup](#setup)
+* [Features](#features)
+* [Folder Structure](#folder-structure)
+* [Screenshots](#screenshots)
 
-Currently, two official plugins are available:
+## Demo
+Here is a working live demo :  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies
+* [React](https://reactjs.org/) - A JavaScript library for building user interfaces
+* [React Router](https://reactrouter.com/) - Declarative routing for React.js
+* [Redux](https://redux.js.org/) - A Predictable State Container for JS Apps
+* [TypeScript](https://www.typescriptlang.org/) - TypeScript extends JavaScript by adding types.
+* [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework for rapidly building custom designs.
+* [Vite](https://vitejs.dev/) - Next Generation Frontend Tooling
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Setup
+To run this project, install it locally using npm:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```
+$ git clone
+$ cd panorbit-task
+$ npm install
+$ npm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Features
+* Redux store
+* TypeScript
+* React Router
+* Tailwind CSS
+
+## Folder Structure
+```
+.
+├── public
+├── src
+│   ├── app
+|   |   ├── features
+|   |   |   └── userSlice.ts
+|   |   ├── store.ts
+|   |   └── types.ts
+│   ├── assets
+│   ├── components
+|   |   ├── Dashboard
+|   |   |   ├── ChatBox.tsx
+|   |   |   └── ChatSelector.tsx
+|   |   ├── Screens
+|   |   |   ├── GalleryScreen.tsx
+|   |   |   ├── PostScreen.tsx
+|   |   |   ├── ProfileScreen.tsx
+|   |   |   └── TodoScreen.tsx
+|   |   └── Users
+|   |       ├── UserCard.tsx
+|   |       └── OnlineUsers.tsx
+│   ├── Pages
+|   |   ├── LandingPage.tsx
+|   |   └── UserPage.tsx
+│   ├── App.tsx
+│   ├── index.css
+│   ├── main.tsx
+│   └── typings.d.ts
+├── .gitignore
+├── package.json
+
+```
+
+## Screenshots
+
+ 
+
+
+

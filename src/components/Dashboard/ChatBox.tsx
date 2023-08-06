@@ -1,46 +1,28 @@
 import React, { useState } from "react";
 import { Message, User } from "../../typings";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../app/store";
+import { setIsChatOpen } from "../../app/features/userSlice";
 
 export default function ChatBox() {
-  const [toggleChat, setToggleChat] = useState<Boolean>(true);
-const dispatch = useDispatch();
-  const user = {
-    id: 1,
-    name: "Leanne Graham",
-    username: "Bret",
-    email: "Sincere@april.biz",
-    profilepicture:
-      "https://panorbit.in/wp-content/uploads/2019/hotlink-ok/1001.jpeg",
-    address: {
-      street: "Kulas Light",
-      suite: "Apt. 556",
-      city: "Gwenborough",
-      zipcode: "92998-3874",
-      geo: {
-        lat: "-37.3159",
-        lng: "81.1496",
-      },
-    },
-    phone: "1-770-736-8031 x56442",
-    website: "hildegard.org",
-    company: {
-      name: "Romaguera-Crona",
-      catchPhrase: "Multi-layered client-server neural-net",
-      bs: "harness real-time e-markets",
-    },
-  } as User;
+  const [toggleChat, setToggleChat] = useState<Boolean>(false);
+  const dispatch = useDispatch();
+  const user = useSelector((state: RootState) => state.user.chatUser) as User;
+  const close = () => {
+    dispatch(setIsChatOpen(false));
+    };
   const initialMessages = [
     {
       id: 1,
       message: "Hello, " + user.name,
       timestamp: "2021-08-25T18:30:00.000Z",
-      senderId: 1,
+      senderId: user.id,
       receiverId: 2,
     },
     {
       id: 2,
-      message: "Hi, I work at " + user.company.name + " as a " + user.company.bs,
+      message:
+        "Hi, I work at " + user.company.name + " as a " + user.company.bs,
       timestamp: "2021-08-25T18:30:00.000Z",
       senderId: 2,
       receiverId: 1,
@@ -49,7 +31,7 @@ const dispatch = useDispatch();
       id: 3,
       message: "How are you?",
       timestamp: "2021-08-25T18:30:00.000Z",
-      senderId: 1,
+      senderId: user.id,
       receiverId: 2,
     },
     {
@@ -67,18 +49,17 @@ const dispatch = useDispatch();
   const sendMessage = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setMessages([
-        ...messages,
-        {
-            id: messages.length + 1,
-            message: message,
-            timestamp: new Date().toISOString(),
-            senderId: user.id,
-            receiverId: 2,
-            },
-        ]);
-        setMessage("");
-    };
-
+      ...messages,
+      {
+        id: messages.length + 1,
+        message: message,
+        timestamp: new Date().toISOString(),
+        senderId: user.id,
+        receiverId: 2,
+      },
+    ]);
+    setMessage("");
+  };
 
   return (
     <div
@@ -87,10 +68,7 @@ const dispatch = useDispatch();
         (toggleChat ? "  translate-y-[17rem]" : " translate-y-0")
       }
     >
-      <div
-        className="flex justify-between items-center cursor-pointer bg-blue-500 text-white p-3"
-        onClick={() => setToggleChat(!toggleChat)}
-      >
+      <div className="flex justify-between items-center cursor-pointer bg-blue-500 text-white p-3">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-gray-300">
             <img
@@ -99,19 +77,33 @@ const dispatch = useDispatch();
               className="w-full h-full rounded-full"
             />
           </div>
-          <h1 className="text-text-primary text-white ">{user.name}</h1>
+          <h1 className=" text-white ">{user.name}</h1>
         </div>
-        <svg
-          viewBox="0 0 580 1000"
-          fill="currentColor"
-          height="1em"
-          width="1em"
-          className={
-            "transform duration-300" + (toggleChat ? " rotate-180" : "")
-          }
-        >
-          <path d="M564 428L330 652c-12 12-25.333 18-40 18-14.667 0-28-6-40-18L16 428C5.333 417.333 0 403.667 0 387s5.333-30.333 16-41c25.333-25.333 51.333-25.333 78 0l196 188 196-188c26.667-25.333 52.667-25.333 78 0 10.667 10.667 16 24.333 16 41s-5.333 30.333-16 41" />
-        </svg>
+        <div className="flex items-center gap-x-2">
+          <svg
+            viewBox="0 0 580 1000"
+            fill="currentColor"
+            height="1em"
+            width="1em"
+            className={
+              "transform duration-300 hover:scale-125" +
+              (toggleChat ? " rotate-180" : "")
+            }
+            onClick={() => setToggleChat(!toggleChat)}
+          >
+            <path d="M564 428L330 652c-12 12-25.333 18-40 18-14.667 0-28-6-40-18L16 428C5.333 417.333 0 403.667 0 387s5.333-30.333 16-41c25.333-25.333 51.333-25.333 78 0l196 188 196-188c26.667-25.333 52.667-25.333 78 0 10.667 10.667 16 24.333 16 41s-5.333 30.333-16 41" />
+          </svg>
+          <svg
+            viewBox="0 0 470 1000"
+            fill="currentColor"
+            height="1em"
+            width="1em"
+            className="transform duration-300 hover:scale-125"
+            onClick={() => close()}
+          >
+            <path d="M452 656c12 12 18 26.333 18 43s-6 31-18 43c-12 10.667-26.333 16-43 16s-31-5.333-43-16L234 590 102 742c-12 10.667-26.333 16-43 16s-31-5.333-43-16C5.333 730 0 715.667 0 699s5.333-31 16-43l138-156L16 342C5.333 330 0 315.667 0 299s5.333-31 16-43c12-10.667 26.333-16 43-16s31 5.333 43 16l132 152 132-152c12-10.667 26.333-16 43-16s31 5.333 43 16c12 12 18 26.333 18 43s-6 31-18 43L314 500l138 156" />
+          </svg>
+        </div>
       </div>
       <div className=" h-full">
         <div className="flex h-[70%] flex-col gap-y-2 px-4 py-2 overflow-y-scroll">
@@ -130,7 +122,10 @@ const dispatch = useDispatch();
             </div>
           ))}
         </div>
-        <form onSubmit={e => sendMessage(e)} className="flex h-[10%] border-t items-center gap-2">
+        <form
+          onSubmit={(e) => sendMessage(e)}
+          className="flex h-[10%] border-t items-center gap-2"
+        >
           <input
             type="text"
             required
