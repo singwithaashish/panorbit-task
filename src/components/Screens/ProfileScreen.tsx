@@ -5,7 +5,7 @@ export default function ProfileScreen({ user }: { user: User | undefined }) {
     return <div>Loading...</div>;
   }
   return (
-    <div className="grid grid-cols-5 gap-5 pt-5 w-full h-full ">
+    <section className="grid grid-cols-5 gap-5 pt-5 w-full h-full ">
       <div className="col-span-2 border-r border-gray-300 flex flex-col items-center">
         <div className=" w-52 h-52 rounded-full bg-gray-300">
           <img
@@ -60,13 +60,15 @@ export default function ProfileScreen({ user }: { user: User | undefined }) {
           </div>
           <div className="rounded-xl overflow-clip h-80">
             <div>
-            <iframe
-      width="600"
-      height="400"
-      // frameborder="0"
-      src={`https://www.bing.com/maps/embed?h=400&w=600&cp=${parseFloat(user?.address.geo.lat)}~${parseFloat(user?.address.geo.lng)}`}
-      // scrolling="no"
-    ></iframe>
+              <div>
+                {/* for some reason, our lat and lng not working here so a solution would be to use google map with api key */}
+                <iframe
+                  width="600"
+                  height="400"
+                  src="https://www.bing.com/maps/embed?h=400&w=600&cp=12.98363583874702~77.55233992416848&lvl=15.09&typ=s&sty=r&src=SHELL&FORM=MBEDV8"
+                  scrolling="no"
+                ></iframe>
+              </div>
             </div>
           </div>
           <div className="flex justify-end gap-x-2">
@@ -81,6 +83,6 @@ export default function ProfileScreen({ user }: { user: User | undefined }) {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

@@ -1,11 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import { User } from "../../typings";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { addUsers, setIsDropdownOpen } from "../../app/features/userSlice";
 import { useParams } from "react-router-dom";
 
-export default function ProfileDropdown() {
+export default function ProfileDropdown({
+  setDropdownOpen,
+  dropdownOpen,
+}: {
+  setDropdownOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  dropdownOpen: boolean;
+}) {
   const { id } = useParams();
   const dispatch = useDispatch();
   const users = useSelector(
@@ -23,32 +29,33 @@ export default function ProfileDropdown() {
 
   const user = users.filter((user) => user.id === parseInt(id!.toString()))[0];
 
-  const dropdownRef = useRef<HTMLDivElement>(null);
+//   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleOutsideClick = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        // Clicked outside the dropdown, close the dropdown here...
-        dispatch(setIsDropdownOpen(false))
-      }
-    };
+//   useEffect(() => {
+//     const handleOutsideClick = (event: MouseEvent) => {
+//       if (
+//         dropdownRef.current &&
+//         !dropdownRef.current.contains(event.target as Node) &&
+//         dropdownOpen
+//       ) {
+//         setDropdownOpen(false);
+//       }
+//     };
 
-    document.addEventListener("click", handleOutsideClick);
+//     document.addEventListener("click", handleOutsideClick);
 
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
-    };
-  }, []);
+//     return () => {
+//       document.removeEventListener("click", handleOutsideClick);
+//     };
+//   }, [dropdownOpen]);
 
   //   const user = users.filter((user) => user.id === parseInt(id!.toString()))[0];
   return (
     <div
-      ref={dropdownRef}
+    //   ref={dropdownRef}
       className={
-        " w-72 rounded-3xl h-96 absolute bg-white px-5 shadow-2xl translate-y-24 -translate-x-20 right-0 top-0 overflow-clip flex flex-col items-center justify-center duration-300"
+        " w-72 rounded-3xl h-96 absolute bg-white px-5 shadow-2xl translate-y-24 -translate-x-20 right-0 top-0 overflow-clip flex flex-col items-center justify-center duration-300" +
+        (dropdownOpen ? " translate-x-0" : " translate-x-full")
       }
     >
       <div className=" w-24 h-24 rounded-full bg-gray-300">
