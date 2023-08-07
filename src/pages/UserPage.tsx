@@ -78,7 +78,7 @@ export default function UserPage() {
       {/* <ProfileScreen user={user} /> */}
       <div className=" w-4/5 col-span-10 p-5 overflow-y-scroll">
         <header className="flex justify-between pb-5 border-b border-gray-300">
-          <h1 className="text-xl font-medium text-text-primary">Profile</h1>
+          <h1 className="text-xl font-medium text-text-primary">{page?.charAt(0).toUpperCase() + page!.slice(1)}</h1>
           <div
             className="flex items-center gap-3 cursor-pointer"
             onClick={(e) => {
