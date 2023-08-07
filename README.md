@@ -73,6 +73,10 @@ $ npm run dev
 ```
 
 ## Screenshots
+![Screenshot from 2023-08-07 10-55-11](https://github.com/singwithaashish/panorbit-task/assets/52033403/d8d2e948-5269-404c-b0b1-9625f076ac49)
+![Screenshot from 2023-08-07 10-25-21](https://github.com/singwithaashish/panorbit-task/assets/52033403/ab7ccda1-a5a9-4120-afb7-cd3b7d7f5bad)
+![Screenshot from 2023-08-07 10-25-02](https://github.com/singwithaashish/panorbit-task/assets/52033403/26c51ed2-8f22-4be3-9102-e59cacbe3c27)
+![Screenshot from 2023-08-07 10-24-34](https://github.com/singwithaashish/panorbit-task/assets/52033403/5794d2ef-895a-43d3-a5f9-23115f646a12)
 
  
 
