@@ -9,8 +9,7 @@
 * [Screenshots](#screenshots)
 
 ## Demo
-Here is a working live demo :  https://64cfaa85842a6d535197c46c--endearing-tulumba-6806f1.netlify.app
-
+Here is a working live demo:  https://endearing-tulumba-6806f1.netlify.app/
 ## Technologies
 * [React](https://reactjs.org/) - A JavaScript library for building user interfaces
 * [React Router](https://reactrouter.com/) - Declarative routing for React.js
@@ -24,7 +23,7 @@ Here is a working live demo :  https://64cfaa85842a6d535197c46c--endearing-tulum
 To run this project, install it locally using npm:
 
 ```
-$ git clone
+$ git clone https://github.com/singwithaashish/panorbit-task
 $ cd panorbit-task
 $ npm install
 $ npm run dev
@@ -49,8 +48,8 @@ $ npm run dev
 │   ├── assets
 │   ├── components
 |   |   ├── Dashboard
-|   |   |   ├── ChatBox.tsx
-|   |   |   └── ChatSelector.tsx
+|   |   |   ├── ChatBox.tsx # messaging popup
+|   |   |   └── ChatSelector.tsx # select users to chat popup
 |   |   ├── Layout
 |   |   |   └── Sidebar.tsx
 |   |   ├── Screens
@@ -59,8 +58,8 @@ $ npm run dev
 |   |   |   ├── ProfileScreen.tsx
 |   |   |   └── TodoScreen.tsx
 |   |   └── Users
-|   |       ├── UserCard.tsx
-|   |       └── OnlineUsers.tsx
+|   |       ├── UserCard.tsx # user's name and avatar
+|   |       └── OnlineUsers.tsx # user's name, avatar and online status
 │   ├── Pages
 |   |   ├── LandingPage.tsx
 |   |   └── UserPage.tsx
